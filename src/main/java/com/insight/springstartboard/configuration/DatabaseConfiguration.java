@@ -30,6 +30,12 @@ public class DatabaseConfiguration {
     }
 
     @Bean
+    @ConfigurationProperties(prefix = "mybatis.configuration")  // application.properties 설정 중 mybatis 관련 설정 가져옴
+    public org.apache.ibatis.session.Configuration mybatisConfig() {
+        return new org.apache.ibatis.session.Configuration();   // 가져온 mybatis 설정을 자바 클래스로 변환
+    }
+
+    @Bean
     public DataSource dataSource() throws Exception {
         // 히카리CP의 설정 파일을 이용해 데이터베이스와 연결하는 데이터 소스 생성
         /*
@@ -43,17 +49,12 @@ public class DatabaseConfiguration {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "mybatis.configuration")  // application.properties 설정 중 mybatis 관련 설정 가져옴
-    public org.apache.ibatis.session.Configuration mybatisConfig() {
-        return new org.apache.ibatis.session.Configuration();   // 가져온 mybatis 설정을 자바 클래스로 변환
-    }
-
-    @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/sql-*.xml"));
         sqlSessionFactoryBean.setConfiguration(mybatisConfig());    // mybatis 설정 파일 추가
+
         return sqlSessionFactoryBean.getObject();
     }
 
