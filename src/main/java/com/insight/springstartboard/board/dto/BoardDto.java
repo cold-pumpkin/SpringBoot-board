@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class BoardDto {
+    // Lombok으로 getter/setter, toString, hashCode, equals 생성
     private int boardIdx;
     private String title;
     private String contents;
