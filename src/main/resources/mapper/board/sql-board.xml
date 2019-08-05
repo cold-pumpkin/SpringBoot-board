@@ -17,24 +17,24 @@
 		]]>
     </select>
 
-<!--    <insert id="insertBoard" parameterType="board.board.dto.BoardDto" useGeneratedKeys="true" keyProperty="boardIdx">-->
-<!--        <![CDATA[-->
-<!--			INSERT INTO t_board-->
-<!--			(-->
-<!--				title,-->
-<!--				contents,-->
-<!--				created_datetime,-->
-<!--				creator_id-->
-<!--			)-->
-<!--			VALUES-->
-<!--			(-->
-<!--				#{title},-->
-<!--				#{contents},-->
-<!--				NOW(),-->
-<!--				'admin'-->
-<!--			)-->
-<!--		]]>-->
-<!--    </insert>-->
+    <insert id="insertBoard" parameterType="com.insight.springstartboard.board.dto.BoardDto" useGeneratedKeys="true" keyProperty="boardIdx">
+        <![CDATA[
+			INSERT INTO t_board
+			(
+				title,
+				contents,
+				created_datetime,
+				creator_id
+			)
+			VALUES
+			(
+				#{title},
+				#{contents},
+				NOW(),
+				'admin'
+			)
+		]]>
+    </insert>
 
 <!--    <select id="selectBoardDetail" parameterType="int" resultType="board.board.dto.BoardDto">-->
 <!--        <![CDATA[-->
