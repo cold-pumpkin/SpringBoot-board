@@ -11,4 +11,7 @@ public interface BoardMapper {
 
     void insertBoard(BoardDto board) throws Exception;
 
+    void updateHitCount(int boardIdx);
+
+    BoardDto selectBoardDetail(int boardIdx);
 }

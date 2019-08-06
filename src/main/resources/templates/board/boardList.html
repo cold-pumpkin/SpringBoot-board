@@ -28,7 +28,9 @@
         <!-- 게시글이 한 개 이상 있을 경우 목록으로 보여줌 -->
         <tr th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
             <td th:text="${list.boardIdx}"></td>
-            <td class="title"><a href="/board/openBoardDetail.do?boardIdx=" th:attrappend="href=${list.boardIdx}" th:text="${list.title}"></a></td>
+            <td class="title">
+                <!-- 클릭시 게시글 상세 화면으로 링크 연결 : 게시글 번호를 파라미터로 추가-->
+                <a href="/board/openBoardDetail.do?boardIdx=" th:attrappend="href=${list.boardIdx}" th:text="${list.title}"></a></td>
             <td th:text="${list.hitCnt}"></td>
             <td th:text="${list.createdDatetime}"></td>
         </tr>

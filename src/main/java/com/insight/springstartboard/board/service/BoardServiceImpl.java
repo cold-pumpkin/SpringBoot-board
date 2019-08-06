@@ -23,4 +23,11 @@ public class BoardServiceImpl implements BoardService {
     public void insertBoard(BoardDto board) throws Exception {
         boardMapper.insertBoard(board);
     }
+
+    @Override
+    public BoardDto selectBoardDetail(int boardIdx) throws Exception {
+        // 글 상세 내용 조회 + 조회수 증가
+        boardMapper.updateHitCount(boardIdx);
+        return boardMapper.selectBoardDetail(boardIdx);
+    }
 }
