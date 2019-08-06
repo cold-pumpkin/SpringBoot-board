@@ -28,7 +28,7 @@ public class BoardController {
     }
 
     // 게시글 작성 화면 호출
-    @RequestMapping("/board/openBoardWriter.do")
+    @RequestMapping("/board/openBoardWrite.do")
     public String openBoardWriter() throws Exception {
         return "/board/boardWrite";
     }
@@ -49,5 +49,19 @@ public class BoardController {
         mv.addObject("board", board);
 
         return mv;
+    }
+
+    // 게시글 수정
+    @RequestMapping("/board/updateBoard.do")
+    public String updateBoard(BoardDto board) throws Exception {
+        boardService.updateBoard(board);
+        return "redirect:/board/openBoardList.do";
+    }
+
+    // 게시글 삭제
+    @RequestMapping("/board/deleteBoard.do")
+    public String deleteBoard(int boardIdx) throws Exception {
+        boardService.deleteBoard(boardIdx);
+        return "redirect:/board/openBoardList.do";
     }
 }
