@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- Appenders -->
+
+    <!-- DEBUG 모드용-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d %5p [%c] %m%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- INFO 모드용-->
+    <appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d %5p %m%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 로거 -->
+    <logger name="board" level="DEBUG" appender-ref="console"/>
+
+    <logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog"/>
+    <logger name="jdbc.sqltiming" level="OFF" appender-ref="console-infolog"/>
+    <logger name="jdbc.audit" level="OFF" appender-ref="console-infolog"/>
+    <logger name="jdbc.resultset" level="OFF" appender-ref="console-infolog"/>
+    <logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog"/>
+    <logger name="jdbc.connection" level="OFF" appender-ref="console-infolog"/>
+
+    <!-- 루트 로거 -->
+    <root level="off">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

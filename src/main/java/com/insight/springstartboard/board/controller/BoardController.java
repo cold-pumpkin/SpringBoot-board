@@ -2,6 +2,9 @@ package com.insight.springstartboard.board.controller;
 
 import com.insight.springstartboard.board.dto.BoardDto;
 import com.insight.springstartboard.board.service.BoardService;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
+@Slf4j
 public class BoardController {
+
+    //private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private BoardService boardService;
@@ -19,6 +25,8 @@ public class BoardController {
     // 게시글 목록 조회
     @RequestMapping("/board/openBoardList.do")
     public ModelAndView openBoardList() throws Exception {
+        log.debug("openBoardList");
+
         ModelAndView mv = new ModelAndView("/board/boardList"); // templates/board/boardList.html
 
         List<BoardDto> list = boardService.selectBoardList();
