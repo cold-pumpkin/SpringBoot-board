@@ -19,14 +19,21 @@
     </appender>
 
     <!-- 로거 -->
-    <logger name="board" level="DEBUG" appender-ref="console"/>
+    <logger name="board" level="DEBUG" appender-ref="console" additivity="false"/> <!-- 로그 한 번만 출력-->
+
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="org.springframework.jdbc" level="ERROR"/>
 
     <logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog"/>
+    <logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog"/>
+
+    <!--
     <logger name="jdbc.sqltiming" level="OFF" appender-ref="console-infolog"/>
     <logger name="jdbc.audit" level="OFF" appender-ref="console-infolog"/>
     <logger name="jdbc.resultset" level="OFF" appender-ref="console-infolog"/>
     <logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog"/>
     <logger name="jdbc.connection" level="OFF" appender-ref="console-infolog"/>
+    -->
 
     <!-- 루트 로거 -->
     <root level="off">
