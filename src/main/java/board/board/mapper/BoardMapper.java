@@ -21,4 +21,6 @@ public interface BoardMapper {
 	void deleteBoard(int boardIdx) throws Exception;
 
     void insertBoardFileList(List<BoardFileDto> list) throws Exception;
+
+    List<BoardFileDto> selectBoardFileList(int boardIdx) throws Exception;
 }
