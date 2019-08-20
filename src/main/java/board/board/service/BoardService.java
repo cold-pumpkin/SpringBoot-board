@@ -1,6 +1,7 @@
 package board.board.service;
 
 import board.board.dto.BoardDto;
+import board.board.dto.BoardFileDto;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.List;
@@ -17,4 +18,5 @@ public interface BoardService {
 
 	void deleteBoard(int boardIdx) throws Exception;
 
+	BoardFileDto selectBoardFileInformation(int idx, int boardIdx) throws Exception;
 }
