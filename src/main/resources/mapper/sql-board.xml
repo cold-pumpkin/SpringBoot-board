@@ -69,7 +69,7 @@
 			UPDATE t_board SET 
 				title = #{title},
 				contents = #{contents},
-				updated_datetime = Now(),
+				updated_datetime = NOW(),
 				updater_id = 'admin'
 			WHERE 
 				board_idx = #{boardIdx}

@@ -26,7 +26,8 @@
 	        <tbody>
 	        	<tr th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
 	        		<td th:text="${list.boardIdx}"></td>
-	        		<td class="title"><a href="/board/openBoardDetail.do?boardIdx=" th:attrappend="href=${list.boardIdx}" th:text="${list.title}"></a></td>
+	        		<!-- <1> -->
+	        		<td class="title"><a href="/board/" th:attrappend="href=${list.boardIdx}" th:text="${list.title}"></a></td>
 	        		<td th:text="${list.hitCnt}"></td>
 	        		<td th:text="${list.createdDatetime}"></td>
 	        	</tr> 
@@ -35,7 +36,8 @@
 	        	</tr>
 	        </tbody>
 	    </table>
-	    <a href="/board/openBoardWrite.do" class="btn">글 쓰기</a>
+	    <!-- <2> -->
+	    <a href="/board/write" class="btn">글 쓰기</a>
     </div>
 </body>
 </html>
