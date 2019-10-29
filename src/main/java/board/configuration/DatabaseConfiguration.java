@@ -43,6 +43,12 @@ public class DatabaseConfiguration {
 		DataSource dataSource = new HikariDataSource(hikariConfig());
 		return dataSource;
 	}
+
+	@Bean
+	@ConfigurationProperties(prefix="spring.jpa")
+	public Properties hibernateConfig() {
+		return new Properties();
+	}
 	
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
@@ -62,10 +68,5 @@ public class DatabaseConfiguration {
 	@Bean
 	public PlatformTransactionManager transactionManager() throws Exception {
 		return new DataSourceTransactionManager(dataSource());
-	}
-
-	@ConfigurationProperties(prefix="spring.jpa")
-	public Properties hibernateConfig() {
-		return new Properties();
 	}
 }
