@@ -35,5 +35,4 @@ public class BoardEntity {
     @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "board_idx")
     private Collection<BoardFileEntity> fileList;
-
 }
