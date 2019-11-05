@@ -1,6 +1,7 @@
 package board.board.common;
 
 import board.board.dto.BoardFileDto;
+import board.board.entity.BoardFileEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,12 +16,13 @@ import java.util.List;
 
 @Component
 public class FileUtils {
-    public List<BoardFileDto> parseFileInfo(int boardIdx, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
+
+    public List<BoardFileEntity> parseFileInfo(MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
         if(ObjectUtils.isEmpty(multipartHttpServletRequest)) {
             return null;
         }
 
-        List<BoardFileDto> fileList = new ArrayList<>();
+        List<BoardFileEntity> fileList = new ArrayList<>();
 
         // 오늘 날짜 형식으로 파일이 업로드될 폴더 생성
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -63,8 +65,8 @@ public class FileUtils {
                 newFileName = Long.toString(System.nanoTime()) + originalFileExtension;
 
                 // 데이터베이스에 저장할 파일 정보를 BoardFileDto에 저장
-                BoardFileDto boardFile = new BoardFileDto();
-                boardFile.setBoardIdx(boardIdx);
+                BoardFileEntity boardFile = new BoardFileEntity();
+                //boardFile.setBoardIdx(boardIdx);
                 boardFile.setFileSize(multipartFile.getSize());
                 boardFile.setOriginalFileName(multipartFile.getOriginalFilename());
                 boardFile.setStoredFilePath(path + "/" + newFileName);
