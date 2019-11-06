@@ -3,6 +3,7 @@ package board.board.service;
 import board.board.common.FileUtils;
 import board.board.entity.BoardEntity;
 import board.board.entity.BoardFileEntity;
+import board.board.repository.JpaBoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -36,8 +37,9 @@ public class JpaBoardServiceImpl implements JpaBoardService {
 
     @Override
     public BoardEntity selectBoardDetail(int boardIdx) throws Exception {
-        Optional<BoardEntity> optional = optional.get();
+        Optional<BoardEntity> optional =  jpaBoardRepository.findById(boardIdx);
         if(optional.isPresent()) {
+            BoardEntity board = optional.get();
             board.setHitCnt(board.getHitCnt() + 1);
             jpaBoardRepository.save(board);
 
