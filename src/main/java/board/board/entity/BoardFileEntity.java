@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "t_jap_file")
+@Table(name = "t_jpa_file")
 @NoArgsConstructor
 @Data
 public class BoardFileEntity {

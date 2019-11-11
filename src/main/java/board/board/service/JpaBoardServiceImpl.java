@@ -30,6 +30,10 @@ public class JpaBoardServiceImpl implements JpaBoardService {
         board.setCreatorId("admin");
         List<BoardFileEntity> list = fileUtils.parseFileInfo(multipartHttpServletRequest);
         if(CollectionUtils.isEmpty(list) == false) {
+            // 첨부파일의 creator_id 강제 셋팅
+            for(BoardFileEntity file : list)
+                    file.setCreatorId("admin");
+
             board.setFileList(list);
         }
         jpaBoardRepository.save(board);

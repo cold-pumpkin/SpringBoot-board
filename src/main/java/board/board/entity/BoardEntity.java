@@ -16,8 +16,11 @@ public class BoardEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int boardIdx;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
+    private String contents;
 
     @Column(nullable = false)
     private int hitCnt = 0;

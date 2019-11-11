@@ -53,10 +53,11 @@ public class BoardServiceImpl implements BoardService{
 			}
 		}
 		*/
+		/*
 		List<BoardFileDto> list = fileUtils.parseFileInfo(board.getBoardIdx(), multipartHttpServletRequest);
 		if(!CollectionUtils.isEmpty(list)) {
 			boardMapper.insertBoardFileList(list);
-		}
+		}*/
 	}
 
 	@Override
